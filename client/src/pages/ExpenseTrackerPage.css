@@ -1,0 +1,86 @@
+:root {
+  --primary-color: #0b0b14;
+  --text-color: #222;
+  --bg-color: #fff;
+  --light-bg: #f8f9fc;
+  --border-color: #ddd;
+}
+
+.expense-tracker-page {
+  background: var(--light-bg);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around; /* Distribute buttons with space around them */
+  margin: 1rem auto; /* Add 1rem margin to top and bottom, auto for horizontal centering */
+  background-color: var(--light-bg); /* Different from component background */
+  padding: 0.3rem;
+  border-radius: 10px;
+  width: 60%; /* Set width to 60% */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabs button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-color);
+  font-weight: 500;
+  border-radius: 7px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tabs button.active {
+  background-color: #000; /* Set active tab background to black */
+  color: #fff;
+}
+
+.floating-btn {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floating-btn:hover {
+  background: #2c2c3a;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    width: 95%; /* Make tabs wider on mobile */
+  }
+  .tabs button {
+    padding: 0.5rem 0.6rem; /* Reduce padding on mobile */
+    font-size: 0.9rem; /* Make font smaller on mobile */
+  }
+  .floating-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.2rem;
+  }
+}
