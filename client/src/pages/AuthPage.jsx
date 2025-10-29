@@ -4,7 +4,6 @@ import './AuthPage.css';
 
 export default function AuthPage() {
   const [isSignIn, setIsSignIn] = useState(false);
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,6 +11,7 @@ export default function AuthPage() {
     confirmPassword: '',
   });
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const navigate = useNavigate();
   
 
   const handleChange = (e) => {
@@ -34,7 +34,7 @@ export default function AuthPage() {
       localStorage.setItem("token", data.jwtToken);
       localStorage.setItem("name", data.name);
       localStorage.setItem("email", data.email);
-      console.log("✅ Token saved:", data.jwtToken);
+      // console.log("✅ Token saved:", data.jwtToken);
     } else {
       console.warn("⚠️ No token returned from backend");
     }
@@ -69,15 +69,12 @@ export default function AuthPage() {
       let result;
       if (isSignIn) {
         result = await signIn();
+        if(result) navigate('/expenses');
       } else {
         result = await signUp();
       }
 
-      console.log('Success:', result);
-      // Here you would typically save the token and redirect the user
-    //   localStorage.setItem('token', result.token);
-    //   localStr
-      navigate('/expenses'); // Redirect to the expenses page
+      // console.log('Success:', result);
       alert(isSignIn ? 'Signed in successfully!' : 'Account created successfully!');
 
     } catch (error) {

@@ -1,4 +1,5 @@
 import React, { useState, useMemo, use } from "react";
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar/Navbar";
 import Dashboard from "../components/Dashboard/Dashboard";
 import AllExpenses from "../components/AllExpenses/AllExpenses";
@@ -14,6 +15,7 @@ const ExpenseTrackerPage = () => {
   const token = localStorage.getItem('token');
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const navigate = useNavigate();
 
   // --- Handlers for expenses ---
   const handleGetExpenseData = async () => {
@@ -116,7 +118,7 @@ const ExpenseTrackerPage = () => {
 
   useEffect(() => {
     if (!token) {
-      navigator('/auth');
+      navigate('/auth'); 
     }
     handleGetExpenseData();
   }, []);
