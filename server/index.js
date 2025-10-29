@@ -11,7 +11,12 @@ const app = express();
 dotenv.config();
 connectDB();
 app.use(express.json());
-app.use(cors());
+
+// app.use(cors());
+app.use(cors({
+  origin: "https://expense-tracker-seven-pi-82.vercel.app",  // ✅ your frontend URL
+  credentials: true,  // ✅ if you’re using cookies or tokens
+}));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/expenses', expenseRoutes);
