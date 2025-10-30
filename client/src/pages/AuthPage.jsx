@@ -21,6 +21,7 @@ export default function AuthPage() {
   const signIn = async () => {
     const url = `${API_BASE_URL}/auth/login`;
     const { email, password } = formData;
+    console.log("Sending login payload:", JSON.stringify({ email, password }));
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
