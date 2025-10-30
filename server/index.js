@@ -14,7 +14,7 @@ app.use(express.json());
 
 // app.use(cors());
 app.use(cors({
-  origin: "https://expense-tracker-seven-pi-82.vercel.app",  // ✅ your frontend URL
+  origin: "*",  // ✅ your frontend URL
   credentials: true,  // ✅ if you’re using cookies or tokens
 }));
 
